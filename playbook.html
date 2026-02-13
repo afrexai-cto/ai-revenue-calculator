@@ -1,721 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Automation Playbook — AfrexAI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']},colors:{brand:{DEFAULT:'#3b82f6',dark:'#0a0a0a',card:'#111111',border:'#1e1e1e',muted:'#888888'}}}}}</script>
-    <style>
-        body { background: #0a0a0a; }
-        .gradient-text { background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .prose h2 { color: #3b82f6; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1e1e1e; }
-        .prose h3 { color: #e2e8f0; font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        .prose p { color: #a0aec0; line-height: 1.8; margin-bottom: 1rem; }
-        .prose ul, .prose ol { color: #a0aec0; margin-bottom: 1rem; padding-left: 1.5rem; }
-        .prose li { margin-bottom: 0.5rem; line-height: 1.7; }
-        .prose strong { color: #e2e8f0; }
-        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        .prose th { background: #111; color: #3b82f6; padding: 0.75rem; text-align: left; border: 1px solid #1e1e1e; font-weight: 600; }
-        .prose td { padding: 0.75rem; border: 1px solid #1e1e1e; color: #a0aec0; }
-        .prose tr:hover td { background: #111; }
-        @media print { body { background: white; } .prose p, .prose li, .prose td { color: #333; } .prose h2 { color: #1a56db; } .no-print { display: none; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Automation Playbook — AfrexAI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
+.prose h2 { scroll-margin-top: 100px; }
+.toc-link:hover { color: #3b82f6; }
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  nav, .no-print, #toc-sidebar { display: none !important; }
+  .prose * { color: #000 !important; border-color: #ccc !important; background: transparent !important; }
+  .prose table { border-collapse: collapse; }
+  .prose td, .prose th { border: 1px solid #ccc !important; padding: 4px 8px !important; }
+}
+</style>
 </head>
-<body class="font-sans text-white antialiased">
-<nav class="fixed top-0 w-full z-50 bg-brand-dark/80 backdrop-blur-xl border-b border-brand-border no-print">
-    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center font-bold text-sm">A</div>
-            <span class="font-bold text-lg">AfrexAI</span>
-        </div>
-        <div class="flex gap-3">
-            <button onclick="window.print()" class="px-4 py-2 bg-brand-card border border-brand-border rounded-lg text-sm hover:border-brand/50 transition">🖨️ Print / PDF</button>
-            <a href="index.html" class="px-4 py-2 bg-brand hover:bg-blue-600 rounded-lg text-sm font-semibold transition">Calculate Your Savings</a>
-        </div>
+<body class="bg-[#0a0a0a] text-gray-200 min-h-screen">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full bg-[#0a0a0a]/95 backdrop-blur border-b border-gray-800 z-50 no-print">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-bold text-white">Afrex<span class="text-[#3b82f6]">AI</span></a>
+    <div class="flex items-center gap-6 text-sm">
+      <a href="#toc" class="text-gray-400 hover:text-white transition">Contents</a>
+      <a href="https://afrexai.com/audit" target="_blank" class="bg-[#3b82f6] text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition">Book Free Audit</a>
     </div>
+  </div>
 </nav>
 
-<main class="max-w-4xl mx-auto px-4 pt-24 pb-20">
-    <div class="text-center mb-16">
-        <div class="inline-block px-4 py-1.5 bg-brand/10 border border-brand/30 rounded-full text-sm font-semibold text-brand mb-6">Free Playbook — 2026 Edition</div>
-        <h1 class="text-4xl sm:text-5xl font-black mb-4">The AI Automation <span class="gradient-text">Playbook</span></h1>
-        <p class="text-xl text-brand-muted max-w-2xl mx-auto">Save £200K+ per year. The complete guide to eliminating manual tasks with AI — from quick wins to full implementation.</p>
-        <p class="text-sm text-brand-muted mt-4">By AfrexAI — The AI Operations Agency | Based on £111K+ of real implementations</p>
+<!-- Hero -->
+<header class="pt-32 pb-16 px-6 text-center">
+  <div class="max-w-3xl mx-auto">
+    <span class="text-[#3b82f6] font-semibold text-sm uppercase tracking-wider">The AI Automation Playbook</span>
+    <h1 class="text-4xl md:text-5xl font-bold text-white mt-4 leading-tight">Save £200K+ Per Year</h1>
+    <p class="text-gray-400 mt-4 text-lg">By AfrexAI — The AI Operations Agency &middot; 2026 Edition</p>
+    <div class="mt-8 bg-gray-800/50 border border-gray-700 rounded-xl p-6 text-left max-w-xl mx-auto">
+      <p class="text-gray-300 italic">"We didn't hire AI to replace people. We hired AI so our people could stop doing work that made them want to quit."</p>
+      <p class="text-gray-500 text-sm mt-2">— Operations Director, £12M logistics company (AfrexAI client)</p>
     </div>
+  </div>
+</header>
 
-    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 mb-12 no-print">
-        <h3 class="font-bold mb-3">📑 Table of Contents</h3>
-        <div class="grid sm:grid-cols-2 gap-2 text-sm">
-            <a href="#ch1" class="text-brand hover:underline">Chapter 1: The AI Revenue Leak</a>
-            <a href="#ch2" class="text-brand hover:underline">Chapter 2: 5 AI Quick Wins (Start Here!)</a>
-            <a href="#ch3" class="text-brand hover:underline">Chapter 3: AI Agent Architecture</a>
-            <a href="#ch4" class="text-brand hover:underline">Chapter 4: 30-Day Implementation Roadmap</a>
-            <a href="#ch5" class="text-brand hover:underline">Chapter 5: ROI Calculator & Business Case</a>
-            <a href="#appendix" class="text-brand hover:underline">Appendix: AI Tool Directory</a>
-        </div>
-    </div>
+<!-- TOC -->
+<section id="toc" class="max-w-3xl mx-auto px-6 pb-16">
+  <div class="bg-gray-900/60 border border-gray-800 rounded-2xl p-8">
+    <h2 class="text-xl font-bold text-white mb-6">📖 Table of Contents</h2>
+    <ol class="space-y-3 text-gray-300">
+      <li><a href="#who" class="toc-link hover:text-[#3b82f6] transition">Who This Playbook Is For</a></li>
+      <li><a href="#ch1" class="toc-link hover:text-[#3b82f6] transition">Chapter 1: The AI Revenue Leak</a>
+        <ul class="ml-5 mt-1 space-y-1 text-sm text-gray-500">
+          <li><a href="#7processes" class="toc-link hover:text-[#3b82f6]">The 7 Manual Processes Bleeding You Dry</a></li>
+          <li><a href="#calculate" class="toc-link hover:text-[#3b82f6]">How to Calculate YOUR Revenue Leak</a></li>
+          <li><a href="#realexample" class="toc-link hover:text-[#3b82f6]">Real Example: A £8M Firm</a></li>
+        </ul>
+      </li>
+      <li><a href="#ch2" class="toc-link hover:text-[#3b82f6] transition">Chapter 2: The 5 AI Quick Wins (Week 1 ROI)</a></li>
+      <li><a href="#ch3" class="toc-link hover:text-[#3b82f6] transition">Chapter 3: AI Agent Architecture</a></li>
+      <li><a href="#ch4" class="toc-link hover:text-[#3b82f6] transition">Chapter 4: Implementation Roadmap</a></li>
+      <li><a href="#ch5" class="toc-link hover:text-[#3b82f6] transition">Chapter 5: ROI Calculator &amp; Business Case Template</a></li>
+      <li><a href="#appendix" class="toc-link hover:text-[#3b82f6] transition">Appendix: AI Tool Directory</a></li>
+      <li><a href="#next" class="toc-link hover:text-[#3b82f6] transition">What Comes Next</a></li>
+    </ol>
+  </div>
+</section>
 
-    <div id="playbook-content" class="prose"></div>
+<!-- Content -->
+<main class="prose max-w-3xl mx-auto px-6 pb-24">
 
-    <div class="mt-16 bg-brand/10 border border-brand/30 rounded-2xl p-8 text-center no-print">
-        <h2 class="text-2xl font-bold mb-3" style="-webkit-text-fill-color: white; background: none;">Want Us to Implement This For You?</h2>
-        <p class="text-brand-muted mb-6">Our team has delivered £111K+ in AI automation projects. We can have your first automation live in 7 days.</p>
-        <a href="mailto:ksmolichki@afrexai.com?subject=🚀%20AI%20Implementation%20Request&body=Hi%20AfrexAI%2C%0A%0AI%20just%20read%20your%20playbook%20and%20I%27d%20like%20to%20discuss%20implementation.%0A%0AMy%20company%3A%20%0ATeam%20size%3A%20%0ABiggest%20pain%20point%3A%20" class="inline-flex px-8 py-4 bg-brand hover:bg-blue-600 rounded-xl text-lg font-bold transition transform hover:scale-105 shadow-lg shadow-brand/25">Book a Free Strategy Call →</a>
-    </div>
+<!-- Who This Is For -->
+<section id="who" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Who This Playbook Is For</h2>
+<p class="text-gray-300 leading-relaxed mb-4">You run a business — or a department inside one — and you've got a nagging feeling you're haemorrhaging money on manual work that shouldn't still be manual. You've heard the AI hype. You've probably tried ChatGPT a few times. Maybe you've even built a few automations with Zapier or Make.</p>
+<p class="text-gray-300 leading-relaxed mb-4">But you haven't cracked the real thing yet: getting AI to genuinely run parts of your operation, day in, day out, without someone babysitting it.</p>
+<p class="text-gray-300 leading-relaxed mb-6">This playbook is the bridge between "we should probably do something with AI" and actually doing it. No theory. No academic waffle. Just the frameworks, numbers, and step-by-step plans we use with clients who pay us five figures to implement this stuff.</p>
+<div class="bg-gray-900/60 border border-gray-800 rounded-xl p-6">
+  <h3 class="text-white font-semibold mb-3">What you'll walk away with:</h3>
+  <ul class="space-y-2 text-gray-300">
+    <li class="flex items-start gap-2"><span class="text-[#3b82f6] mt-1">✓</span> A clear picture of exactly how much manual work is costing you</li>
+    <li class="flex items-start gap-2"><span class="text-[#3b82f6] mt-1">✓</span> Five automations you can deploy in your first week that deliver measurable ROI</li>
+    <li class="flex items-start gap-2"><span class="text-[#3b82f6] mt-1">✓</span> The architecture for building an AI agent team that runs your operations</li>
+    <li class="flex items-start gap-2"><span class="text-[#3b82f6] mt-1">✓</span> A 30-day implementation roadmap you can start Monday</li>
+    <li class="flex items-start gap-2"><span class="text-[#3b82f6] mt-1">✓</span> A ready-to-use business case template for getting buy-in from leadership</li>
+  </ul>
+</div>
+</section>
 
-    <footer class="mt-16 text-center text-brand-muted/40 text-sm border-t border-brand-border pt-8">
-        <p>© 2026 AfrexAI. All rights reserved.</p>
-        <p class="mt-1">Built by the AI Operations Agency that practices what it preaches.</p>
-    </footer>
+<!-- Chapter 1 -->
+<section id="ch1" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Chapter 1: The AI Revenue Leak</h2>
+<h3 class="text-xl font-semibold text-white mb-4">Why You're Losing Money Right Now</h3>
+<p class="text-gray-300 leading-relaxed mb-4">Here's an uncomfortable truth: by the time you're talking to us, you've already wasted somewhere between £50K and £500K on work that didn't need a human.</p>
+<p class="text-gray-300 leading-relaxed mb-6">We did a study across 40 of our clients — SMEs and mid-market companies, mostly in the UK, ranging from £2M to £50M in revenue. The average company was spending <strong class="text-white">23% of total payroll</strong> on tasks that fall into one of seven categories. Every single one can be automated today.</p>
+
+<h3 id="7processes" class="text-xl font-semibold text-white mb-6 mt-10">The 7 Manual Processes Bleeding You Dry</h3>
+
+<div class="space-y-8">
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">1. Email Triage &amp; Response <span class="text-gray-500 font-normal text-sm">£18K–£45K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">The average knowledge worker spends 2.5 hours per day on email. In a team of 10, that's 25 hours per day of collective email faffing. At £35/hour blended cost, you're looking at £227K per year. Even if only 40% is automatable — that's £91K.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">2. Data Entry &amp; Transfer <span class="text-gray-500 font-normal text-sm">£25K–£80K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">The silent killer. One client — a recruitment firm with 30 staff — had three full-time people whose jobs were essentially moving data between systems. We automated 85% of their data transfer work in six weeks.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">3. Invoice &amp; Expense Processing <span class="text-gray-500 font-normal text-sm">£15K–£60K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">Manual invoice processing costs £8–£15 per invoice. At 500 invoices/month, that's £48K–£90K per year. AI brings it down to £1–£3 per invoice. We've seen companies lose £30K+ per year on duplicate payments alone.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">4. Report Generation &amp; Data Analysis <span class="text-gray-500 font-normal text-sm">£20K–£75K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">A property management client had a finance analyst spending every Friday — the entire day — building a weekly report. We automated it. It now generates at 6am every Friday. Cost: £3K setup, £200/month. Annual saving: ~£25K.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">5. Meeting Scheduling, Prep &amp; Follow-up <span class="text-gray-500 font-normal text-sm">£10K–£35K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">The average manager spends 4 hours per week on meeting-related admin. For 5 managers, that's effectively a half-time employee doing nothing but meeting admin — £47K–£68K per year.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">6. Customer Onboarding &amp; Support Triage <span class="text-gray-500 font-normal text-sm">£20K–£90K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">Companies lose 12–18% of new customers during onboarding simply because the process is slow. At £5K average customer value, losing 15 out of 100 costs you £75K.</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold text-lg mb-2">7. Compliance, Documentation &amp; Audit Prep <span class="text-gray-500 font-normal text-sm">£15K–£120K/year wasted</span></h4>
+    <p class="text-gray-300 text-sm leading-relaxed">A mid-size financial advisory firm was spending £8K/month on a compliance consultant. We automated 60% of the grunt work. The consultant now works two days a month instead of four. Annual saving: £48K.</p>
+  </div>
+</div>
+
+<h3 id="calculate" class="text-xl font-semibold text-white mb-4 mt-12">How to Calculate YOUR Revenue Leak</h3>
+<p class="text-gray-300 mb-4">Grab a spreadsheet. This takes 30 minutes and it'll be the most valuable half-hour you spend this month.</p>
+
+<div class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 space-y-4">
+  <div><span class="text-[#3b82f6] font-bold">Step 1:</span> <span class="text-gray-300">List your team members and their fully-loaded cost (salary × 1.3–1.5)</span></div>
+  <div><span class="text-[#3b82f6] font-bold">Step 2:</span> <span class="text-gray-300">For each person, estimate hours/week on the 7 categories above</span></div>
+  <div><span class="text-[#3b82f6] font-bold">Step 3:</span> <span class="text-gray-300">Calculate: Hours/week × 48 weeks × Hourly loaded cost = Annual cost</span></div>
+  <div><span class="text-[#3b82f6] font-bold">Step 4:</span> <span class="text-gray-300">Apply automation percentages (40–95% depending on category)</span></div>
+  <div><span class="text-[#3b82f6] font-bold">Step 5:</span> <span class="text-gray-300">Subtract tool costs (typically £500–£2,000/month for an SME)</span></div>
+</div>
+
+<div class="mt-6 overflow-x-auto">
+  <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+    <thead><tr class="bg-gray-800 text-gray-300">
+      <th class="px-4 py-3 text-left">Category</th><th class="px-4 py-3 text-right">Automation Rate</th>
+    </tr></thead>
+    <tbody class="text-gray-400">
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Email triage</td><td class="px-4 py-2 text-right">40–60%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Data entry/transfer</td><td class="px-4 py-2 text-right">70–90%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Invoice processing</td><td class="px-4 py-2 text-right">80–95%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Report generation</td><td class="px-4 py-2 text-right">60–80%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Meeting admin</td><td class="px-4 py-2 text-right">50–70%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Customer onboarding</td><td class="px-4 py-2 text-right">60–85%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Compliance prep</td><td class="px-4 py-2 text-right">40–60%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="realexample" class="mt-12 bg-gradient-to-br from-blue-900/20 to-gray-900/40 border border-blue-800/30 rounded-xl p-6">
+  <h3 class="text-xl font-semibold text-white mb-4">Real Example: A £8M Professional Services Firm</h3>
+  <div class="grid grid-cols-2 gap-4 text-sm">
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Team size</p><p class="text-white font-bold text-lg">35 people</p></div>
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Total payroll (loaded)</p><p class="text-white font-bold text-lg">£1.82M</p></div>
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Weekly automatable hours</p><p class="text-white font-bold text-lg">187 hrs</p></div>
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Annual cost of those hours</p><p class="text-white font-bold text-lg">£389K</p></div>
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Net Year 1 saving</p><p class="text-[#3b82f6] font-bold text-lg">£172K</p></div>
+    <div class="bg-gray-900/60 rounded-lg p-4"><p class="text-gray-500">Net Year 2+ saving</p><p class="text-[#3b82f6] font-bold text-lg">£196K</p></div>
+  </div>
+</div>
+</section>
+
+<!-- Chapter 2 -->
+<section id="ch2" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Chapter 2: The 5 AI Quick Wins (Week 1 ROI)</h2>
+<p class="text-gray-300 mb-8">Stop planning. Start here. These five automations can be live within days, not months.</p>
+
+<div class="space-y-10">
+
+<!-- QW1 -->
+<div class="bg-gray-900/40 border border-gray-800 rounded-2xl p-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+    <h3 class="text-xl font-bold text-white">Email Triage Automation</h3>
+  </div>
+  <p class="text-gray-400 text-sm mb-4">Classifies incoming emails by urgency, routes them, drafts responses for routine enquiries.</p>
+  <div class="grid md:grid-cols-3 gap-4 text-sm mb-4">
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Setup time</p><p class="text-white font-semibold">2–4 hours</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Weekly saving</p><p class="text-white font-semibold">10–15 hrs/person</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Cost</p><p class="text-white font-semibold">£50–£150/mo</p></div>
+  </div>
+  <details class="text-sm text-gray-400">
+    <summary class="cursor-pointer text-[#3b82f6] font-medium mb-2">Setup steps →</summary>
+    <ol class="list-decimal ml-5 space-y-1 mt-2">
+      <li>Connect your email to Make or n8n</li>
+      <li>Build classification rules using GPT-4o or Claude with 50 example emails</li>
+      <li>Set up routing: urgent → Slack + flag; routine → draft response; spam → archive</li>
+      <li>Run in "shadow mode" for 2–3 days to verify accuracy</li>
+      <li>Go live</li>
+    </ol>
+  </details>
+</div>
+
+<!-- QW2 -->
+<div class="bg-gray-900/40 border border-gray-800 rounded-2xl p-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+    <h3 class="text-xl font-bold text-white">Invoice Processing</h3>
+  </div>
+  <p class="text-gray-400 text-sm mb-4">Extracts data from invoices, matches POs, codes accounts, routes for approval.</p>
+  <div class="grid md:grid-cols-3 gap-4 text-sm mb-4">
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Setup time</p><p class="text-white font-semibold">4–8 hours</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Processing time</p><p class="text-white font-semibold">&lt;1 min/invoice</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Cost</p><p class="text-white font-semibold">£100–£400/mo</p></div>
+  </div>
+  <details class="text-sm text-gray-400">
+    <summary class="cursor-pointer text-[#3b82f6] font-medium mb-2">Setup steps →</summary>
+    <ol class="list-decimal ml-5 space-y-1 mt-2">
+      <li>Choose: Dext, Rossum, or custom pipeline</li>
+      <li>Set up chart of accounts and supplier mappings</li>
+      <li>Configure approval workflows by threshold</li>
+      <li>Connect to accounting software (Xero, QuickBooks, Sage)</li>
+      <li>Process first batch and verify</li>
+    </ol>
+  </details>
+</div>
+
+<!-- QW3 -->
+<div class="bg-gray-900/40 border border-gray-800 rounded-2xl p-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+    <h3 class="text-xl font-bold text-white">Meeting Prep &amp; CRM Updates</h3>
+  </div>
+  <p class="text-gray-400 text-sm mb-4">Auto-generates briefing docs, transcribes meetings, extracts actions, updates CRM.</p>
+  <div class="grid md:grid-cols-3 gap-4 text-sm mb-4">
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Setup time</p><p class="text-white font-semibold">3–5 hours</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Weekly saving</p><p class="text-white font-semibold">4–6 hrs/person</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Cost</p><p class="text-white font-semibold">£15–£30/user/mo</p></div>
+  </div>
+</div>
+
+<!-- QW4 -->
+<div class="bg-gray-900/40 border border-gray-800 rounded-2xl p-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+    <h3 class="text-xl font-bold text-white">Report Generation</h3>
+  </div>
+  <p class="text-gray-400 text-sm mb-4">Pulls data from your systems, generates formatted reports with narrative summaries, delivers on schedule.</p>
+  <div class="grid md:grid-cols-3 gap-4 text-sm mb-4">
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Setup time</p><p class="text-white font-semibold">4–8 hours</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Compile time</p><p class="text-white font-semibold">&lt;5 minutes</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Cost</p><p class="text-white font-semibold">£100–£300/mo</p></div>
+  </div>
+  <p class="text-sm text-gray-500 mt-2">💡 <strong class="text-gray-400">Pro tip:</strong> Start with the report your CEO actually reads. When leadership sees an AI-generated report that's better than the manual version, buy-in for everything else becomes trivially easy.</p>
+</div>
+
+<!-- QW5 -->
+<div class="bg-gray-900/40 border border-gray-800 rounded-2xl p-8">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+    <h3 class="text-xl font-bold text-white">Customer Onboarding (Self-Service)</h3>
+  </div>
+  <p class="text-gray-400 text-sm mb-4">Automates the entire journey from signed contract to active customer.</p>
+  <div class="grid md:grid-cols-3 gap-4 text-sm mb-4">
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Setup time</p><p class="text-white font-semibold">6–12 hours</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Dropout reduction</p><p class="text-white font-semibold">50%+</p></div>
+    <div class="bg-gray-800/60 rounded-lg p-3"><p class="text-gray-500 text-xs">Cost</p><p class="text-white font-semibold">£200–£500/mo</p></div>
+  </div>
+  <p class="text-sm text-gray-500 mt-2">💰 If your average customer is worth £10K/year and you cut onboarding dropout from 15% to 7%, that's <strong class="text-[#3b82f6]">+£96K in annual revenue</strong>.</p>
+</div>
+
+</div>
+</section>
+
+<!-- Chapter 3 -->
+<section id="ch3" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Chapter 3: AI Agent Architecture</h2>
+
+<h3 class="text-xl font-semibold text-white mb-4">What AI Agents Actually Are</h3>
+<p class="text-gray-300 mb-4">A chatbot answers questions when someone asks. An AI agent takes action without being asked. Three characteristics:</p>
+<div class="grid md:grid-cols-3 gap-4 mb-8">
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-5 text-center">
+    <div class="text-2xl mb-2">🤖</div>
+    <h4 class="text-white font-semibold mb-1">Autonomy</h4>
+    <p class="text-gray-500 text-sm">Triggered by events, not human prompts</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-5 text-center">
+    <div class="text-2xl mb-2">🔧</div>
+    <h4 class="text-white font-semibold mb-1">Tool Access</h4>
+    <p class="text-gray-500 text-sm">Reads and writes to your business systems</p>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-5 text-center">
+    <div class="text-2xl mb-2">🧠</div>
+    <h4 class="text-white font-semibold mb-1">Decision-Making</h4>
+    <p class="text-gray-500 text-sm">Follows rules + uses LLM judgement</p>
+  </div>
+</div>
+
+<h3 class="text-xl font-semibold text-white mb-6">The 9-Agent Model for Running Operations</h3>
+<div class="grid md:grid-cols-3 gap-3">
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 1</span><p class="text-white font-semibold text-sm mt-1">Inbox Agent</p><p class="text-gray-500 text-xs">Email & communications</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 2</span><p class="text-white font-semibold text-sm mt-1">Finance Agent</p><p class="text-gray-500 text-xs">Invoices, expenses, payments</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 3</span><p class="text-white font-semibold text-sm mt-1">Calendar Agent</p><p class="text-gray-500 text-xs">Scheduling & meetings</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 4</span><p class="text-white font-semibold text-sm mt-1">CRM Agent</p><p class="text-gray-500 text-xs">Customer data & pipeline</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 5</span><p class="text-white font-semibold text-sm mt-1">Content Agent</p><p class="text-gray-500 text-xs">Documents, reports, proposals</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 6</span><p class="text-white font-semibold text-sm mt-1">Onboarding Agent</p><p class="text-gray-500 text-xs">Customer & employee onboarding</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 7</span><p class="text-white font-semibold text-sm mt-1">Support Agent</p><p class="text-gray-500 text-xs">Customer support & helpdesk</p></div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4"><span class="text-[#3b82f6] font-bold text-sm">Agent 8</span><p class="text-white font-semibold text-sm mt-1">Compliance Agent</p><p class="text-gray-500 text-xs">Regulatory & policy</p></div>
+  <div class="bg-gray-900/40 border border-blue-800/50 rounded-lg p-4 bg-blue-900/10"><span class="text-[#3b82f6] font-bold text-sm">Agent 9</span><p class="text-white font-semibold text-sm mt-1">Orchestrator</p><p class="text-gray-500 text-xs">Cross-agent coordination</p></div>
+</div>
+
+<div class="mt-8 bg-gray-900/60 border border-gray-800 rounded-xl p-6">
+  <h4 class="text-white font-semibold mb-3">How to Structure Your First AI Team</h4>
+  <ol class="space-y-2 text-gray-300 text-sm list-decimal ml-5">
+    <li><strong class="text-white">Start with 2 agents</strong> — typically Inbox + Finance or CRM</li>
+    <li><strong class="text-white">Get them stable</strong> — run 2–4 weeks, monitor, tune</li>
+    <li><strong class="text-white">Add the Orchestrator</strong> — coordinate between agents</li>
+    <li><strong class="text-white">Scale gradually</strong> — one new agent every 4–6 weeks</li>
+  </ol>
+  <p class="text-gray-500 text-sm mt-4">⚠️ <strong class="text-gray-400">Golden rule:</strong> Every agent needs a human supervisor who checks in daily and reviews edge cases.</p>
+</div>
+</section>
+
+<!-- Chapter 4 -->
+<section id="ch4" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Chapter 4: Implementation Roadmap</h2>
+
+<h3 class="text-xl font-semibold text-white mb-6">The 30-Day Plan: Zero to AI-Automated</h3>
+
+<div class="space-y-4">
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold mb-2">Days 1–3: Audit &amp; Assessment</h4>
+    <ul class="text-gray-300 text-sm space-y-1">
+      <li>• Complete the Revenue Leak Calculator</li>
+      <li>• Identify top 3 automation opportunities</li>
+      <li>• Audit your tool stack — APIs, integrations</li>
+      <li>• Document top 5 manual processes step-by-step</li>
+    </ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold mb-2">Days 4–7: Foundation Setup</h4>
+    <ul class="text-gray-300 text-sm space-y-1">
+      <li>• Choose automation platform + set up LLM access</li>
+      <li>• Deploy Email Triage in shadow mode</li>
+      <li>• Start Invoice Processing setup</li>
+    </ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold mb-2">Days 8–14: First Agents Live</h4>
+    <ul class="text-gray-300 text-sm space-y-1">
+      <li>• Take Email Triage live</li>
+      <li>• Complete Invoice Processing → shadow mode</li>
+      <li>• Deploy Meeting Prep (plug-and-play)</li>
+      <li>• Begin documenting results</li>
+    </ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold mb-2">Days 15–21: Expand &amp; Optimise</h4>
+    <ul class="text-gray-300 text-sm space-y-1">
+      <li>• Take Invoice Processing live</li>
+      <li>• Deploy Report Generation</li>
+      <li>• Start Customer Onboarding design</li>
+      <li>• First optimisation pass on Email Triage</li>
+    </ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
+    <h4 class="text-[#3b82f6] font-bold mb-2">Days 22–30: Consolidate &amp; Plan</h4>
+    <ul class="text-gray-300 text-sm space-y-1">
+      <li>• Deploy Customer Onboarding</li>
+      <li>• Compile first monthly AI Operations Report</li>
+      <li>• Build business case for Phase 2</li>
+      <li>• Plan next three agents</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="text-xl font-semibold text-white mt-12 mb-6">Tool Stack Recommendations</h3>
+<p class="text-gray-400 text-sm mb-4">Total monthly cost for a 20-person company: <strong class="text-white">£800–£2,500/month</strong></p>
+
+<div class="overflow-x-auto">
+  <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+    <thead><tr class="bg-gray-800 text-gray-300"><th class="px-4 py-3 text-left">Category</th><th class="px-4 py-3 text-left">Recommended</th><th class="px-4 py-3 text-right">From</th></tr></thead>
+    <tbody class="text-gray-400">
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Automation</td><td class="px-4 py-2 text-white">Make ★★★★★</td><td class="px-4 py-2 text-right">£55/mo</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">LLM</td><td class="px-4 py-2 text-white">OpenAI + Anthropic</td><td class="px-4 py-2 text-right">Pay-per-use</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Documents</td><td class="px-4 py-2 text-white">Dext ★★★★☆</td><td class="px-4 py-2 text-right">£25/mo</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Meetings</td><td class="px-4 py-2 text-white">Fireflies ★★★★★</td><td class="px-4 py-2 text-right">£15/user/mo</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">CRM</td><td class="px-4 py-2 text-white">HubSpot ★★★★★</td><td class="px-4 py-2 text-right">Free</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2">Support</td><td class="px-4 py-2 text-white">Intercom ★★★★★</td><td class="px-4 py-2 text-right">£65/mo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="text-xl font-semibold text-white mt-12 mb-6">AI vs. One More Hire</h3>
+<div class="overflow-x-auto">
+  <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+    <thead><tr class="bg-gray-800 text-gray-300"><th class="px-4 py-3 text-left"></th><th class="px-4 py-3 text-center">New Hire</th><th class="px-4 py-3 text-center text-[#3b82f6]">AI Stack</th></tr></thead>
+    <tbody class="text-gray-400">
+      <tr class="border-t border-gray-800"><td class="px-4 py-2 text-gray-300">Annual cost</td><td class="px-4 py-2 text-center">£35K–£55K</td><td class="px-4 py-2 text-center text-white">£12K–£30K</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2 text-gray-300">Available hours</td><td class="px-4 py-2 text-center">1,820/yr</td><td class="px-4 py-2 text-center text-white">8,760/yr</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2 text-gray-300">Ramp-up</td><td class="px-4 py-2 text-center">3–6 months</td><td class="px-4 py-2 text-center text-white">1–4 weeks</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2 text-gray-300">Error rate</td><td class="px-4 py-2 text-center">2–5%</td><td class="px-4 py-2 text-center text-white">0.1–0.5%</td></tr>
+      <tr class="border-t border-gray-800"><td class="px-4 py-2 text-gray-300">Scalability</td><td class="px-4 py-2 text-center">Linear</td><td class="px-4 py-2 text-center text-white">Near-zero marginal</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- Chapter 5 -->
+<section id="ch5" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Chapter 5: ROI Calculator &amp; Business Case Template</h2>
+
+<h3 class="text-xl font-semibold text-white mb-4">The Board-Ready Business Case</h3>
+<p class="text-gray-300 mb-6">Copy this structure. Fill in your numbers. We've used this to secure buy-in at companies from £3M startups to £200M enterprises.</p>
+
+<div class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 space-y-6 text-sm">
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">1. Executive Summary</h4>
+    <p class="text-gray-400">We are currently spending approximately £[X]/year on manual operational processes that can be automated. A phased implementation over 6 months would deliver a net saving of £[X] in Year 1.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">2. Current State</h4>
+    <p class="text-gray-400">Total automatable hours/week, annual cost, key pain points, error rates, customer impact.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">3. Proposed Solution (3 Phases)</h4>
+    <p class="text-gray-400">Phase 1: Email + invoices + meetings. Phase 2: Reports + onboarding. Phase 3: CRM agent + orchestration.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">4. Investment Required</h4>
+    <p class="text-gray-400">Automation platform, LLM API costs, specialist tools, implementation support, internal time.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">5. Expected Returns</h4>
+    <p class="text-gray-400">Conservative (40% automation), Moderate (60%), Aggressive (80%). Present all three; stake your reputation on conservative.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">6. Risk Mitigation</h4>
+    <p class="text-gray-400">Shadow mode testing, human oversight, phased rollout, enterprise-grade security, monthly reviews.</p>
+  </div>
+  <div>
+    <h4 class="text-[#3b82f6] font-bold mb-2">7. Success Metrics</h4>
+    <p class="text-gray-400">Hours saved, error reduction, processing time, employee satisfaction, customer satisfaction.</p>
+  </div>
+</div>
+
+<h3 class="text-xl font-semibold text-white mt-10 mb-4">What to Track</h3>
+<div class="grid md:grid-cols-2 gap-4">
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4">
+    <h4 class="text-white font-semibold text-sm mb-2">📊 Efficiency</h4>
+    <ul class="text-gray-400 text-sm space-y-1"><li>• Hours saved/week</li><li>• Processing time/unit</li><li>• Error rate before vs. after</li><li>• Backlog size</li></ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4">
+    <h4 class="text-white font-semibold text-sm mb-2">💷 Financial</h4>
+    <ul class="text-gray-400 text-sm space-y-1"><li>• Direct cost saving</li><li>• Revenue impact</li><li>• Cash flow improvement</li><li>• Cost avoidance</li></ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4">
+    <h4 class="text-white font-semibold text-sm mb-2">👥 People</h4>
+    <ul class="text-gray-400 text-sm space-y-1"><li>• Employee satisfaction</li><li>• Retention rates</li><li>• Capacity created</li></ul>
+  </div>
+  <div class="bg-gray-900/40 border border-gray-800 rounded-lg p-4">
+    <h4 class="text-white font-semibold text-sm mb-2">✅ Quality</h4>
+    <ul class="text-gray-400 text-sm space-y-1"><li>• Output consistency</li><li>• Customer satisfaction</li><li>• Compliance accuracy</li></ul>
+  </div>
+</div>
+</section>
+
+<!-- Appendix -->
+<section id="appendix" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">Appendix: AI Tool Directory</h2>
+<p class="text-gray-400 mb-6 text-sm">The 20 tools we recommend most frequently. Pricing current as of early 2026.</p>
+
+<div class="space-y-6">
+  <div>
+    <h4 class="text-white font-semibold mb-3">Automation Platforms</h4>
+    <div class="overflow-x-auto"><table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden"><thead><tr class="bg-gray-800 text-gray-300"><th class="px-3 py-2 text-left">Tool</th><th class="px-3 py-2 text-left">Best For</th><th class="px-3 py-2 text-right">Price</th><th class="px-3 py-2 text-center">Rating</th></tr></thead><tbody class="text-gray-400">
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Make</td><td class="px-3 py-2">Visual workflows</td><td class="px-3 py-2 text-right">£55/mo+</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">n8n</td><td class="px-3 py-2">Technical teams</td><td class="px-3 py-2 text-right">Free/£20+</td><td class="px-3 py-2 text-center">★★★★☆</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Zapier</td><td class="px-3 py-2">Simple automations</td><td class="px-3 py-2 text-right">£55/mo+</td><td class="px-3 py-2 text-center">★★★☆☆</td></tr>
+    </tbody></table></div>
+  </div>
+  <div>
+    <h4 class="text-white font-semibold mb-3">LLM Providers</h4>
+    <div class="overflow-x-auto"><table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden"><thead><tr class="bg-gray-800 text-gray-300"><th class="px-3 py-2 text-left">Tool</th><th class="px-3 py-2 text-left">Best For</th><th class="px-3 py-2 text-center">Rating</th></tr></thead><tbody class="text-gray-400">
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">OpenAI GPT-4o</td><td class="px-3 py-2">General-purpose, fast</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Anthropic Claude</td><td class="px-3 py-2">Long docs, analysis</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Google Gemini</td><td class="px-3 py-2">Multimodal, large context</td><td class="px-3 py-2 text-center">★★★★☆</td></tr>
+    </tbody></table></div>
+  </div>
+  <div>
+    <h4 class="text-white font-semibold mb-3">Meeting, CRM &amp; Support</h4>
+    <div class="overflow-x-auto"><table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden"><thead><tr class="bg-gray-800 text-gray-300"><th class="px-3 py-2 text-left">Tool</th><th class="px-3 py-2 text-left">Best For</th><th class="px-3 py-2 text-right">From</th><th class="px-3 py-2 text-center">Rating</th></tr></thead><tbody class="text-gray-400">
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Fireflies.ai</td><td class="px-3 py-2">CRM integration</td><td class="px-3 py-2 text-right">£15/user</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">HubSpot</td><td class="px-3 py-2">SME all-in-one</td><td class="px-3 py-2 text-right">Free</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Intercom</td><td class="px-3 py-2">AI-first support</td><td class="px-3 py-2 text-right">£65/mo</td><td class="px-3 py-2 text-center">★★★★★</td></tr>
+    <tr class="border-t border-gray-800"><td class="px-3 py-2 text-white">Notion AI</td><td class="px-3 py-2">Internal knowledge</td><td class="px-3 py-2 text-right">£7.50/user</td><td class="px-3 py-2 text-center">★★★★☆</td></tr>
+    </tbody></table></div>
+  </div>
+</div>
+</section>
+
+<!-- What Comes Next -->
+<section id="next" class="mb-20">
+<h2 class="text-2xl font-bold text-white border-b border-gray-800 pb-4 mb-6">What Comes Next</h2>
+<div class="space-y-4">
+  <div class="flex items-start gap-4 bg-gray-900/40 border border-gray-800 rounded-xl p-5">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">1</span>
+    <div><p class="text-white font-semibold">This week</p><p class="text-gray-400 text-sm">Complete the Revenue Leak Calculator. Know your number.</p></div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-900/40 border border-gray-800 rounded-xl p-5">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">2</span>
+    <div><p class="text-white font-semibold">Next week</p><p class="text-gray-400 text-sm">Deploy Quick Win #1 (Email Triage). Get your first taste.</p></div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-900/40 border border-gray-800 rounded-xl p-5">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">3</span>
+    <div><p class="text-white font-semibold">This month</p><p class="text-gray-400 text-sm">Work through all five Quick Wins. Build momentum and evidence.</p></div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-900/40 border border-gray-800 rounded-xl p-5">
+    <span class="bg-[#3b82f6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">4</span>
+    <div><p class="text-white font-semibold">Next month</p><p class="text-gray-400 text-sm">Present your business case. Start planning Phase 2.</p></div>
+  </div>
+</div>
+</section>
+
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-const md = `# The AI Automation Playbook: Save £200K+ Per Year
+<!-- CTA -->
+<section class="py-20 px-6 no-print">
+  <div class="max-w-2xl mx-auto text-center">
+    <div class="bg-gradient-to-br from-blue-900/30 to-gray-900/60 border border-blue-800/30 rounded-2xl p-10">
+      <h2 class="text-3xl font-bold text-white mb-4">Want us to implement this for you?</h2>
+      <p class="text-gray-400 mb-8">AfrexAI has deployed AI agents across 40+ companies, automating over 200,000 hours of manual work.</p>
+      <a href="https://afrexai.com/audit" target="_blank" class="inline-block bg-[#3b82f6] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 transition">Book a Free Consultation →</a>
+      <p class="text-gray-500 text-sm mt-4">30-minute AI Operations Audit · No obligation</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-gray-800 py-8 px-6 text-center">
+  <p class="text-gray-500 text-sm">© 2026 AfrexAI. All rights reserved.</p>
+  <p class="text-gray-600 text-xs mt-2">Licensed for personal and internal business use only.</p>
+</footer>
 
-**By AfrexAI — The AI Operations Agency**
-
-*Version 1.0 | 2026 Edition*
-
----
-
-> "We didn't hire AI to replace people. We hired AI so our people could stop doing work that made them want to quit."
-> — Operations Director, £12M logistics company (AfrexAI client)
-
----
-
-## Who This Playbook Is For
-
-You run a business — or a department inside one — and you've got a nagging feeling you're haemorrhaging money on manual work that shouldn't still be manual. You've heard the AI hype. You've probably tried ChatGPT a few times. Maybe you've even built a few automations with Zapier or Make.
-
-But you haven't cracked the real thing yet: getting AI to genuinely run parts of your operation, day in, day out, without someone babysitting it.
-
-This playbook is the bridge between "we should probably do something with AI" and actually doing it. No theory. No academic waffle. Just the frameworks, numbers, and step-by-step plans we use with clients who pay us five figures to implement this stuff.
-
-**What you'll walk away with:**
-
-- A clear picture of exactly how much manual work is costing you (the number is always bigger than people think)
-- Five automations you can deploy in your first week that deliver measurable ROI
-- The architecture for building an AI agent team that runs your operations
-- A 30-day implementation roadmap you can start Monday
-- A ready-to-use business case template for getting buy-in from leadership
-
-Let's get into it.
-
----
-
-## Chapter 1: The AI Revenue Leak
-
-### Why You're Losing Money Right Now
-
-Here's an uncomfortable truth we share with every new client: by the time you're talking to us, you've already wasted somewhere between £50K and £500K on work that didn't need a human.
-
-Not because your team is lazy. Because nobody sat down and mapped where time actually goes.
-
-We did a study across 40 of our clients — SMEs and mid-market companies, mostly in the UK, ranging from £2M to £50M in revenue. The average company was spending **23% of total payroll** on tasks that fall into one of seven categories. Every single one of these categories can be automated today — not in some futuristic sense, but with tools that exist right now and cost less than a junior hire.
-
-### The 7 Manual Processes Bleeding You Dry
-
-**1. Email Triage & Response (£18K–£45K/year wasted)**
-
-The average knowledge worker spends 2.5 hours per day on email. Not writing thoughtful responses to important messages — sorting, categorising, forwarding, and replying to routine stuff. In a team of 10, that's 25 hours per day of collective email faffing. At a blended cost of £35/hour (salary plus overhead), you're looking at £227K per year across the team. Even if only 40% of that is automatable — and it is — that's £91K.
-
-For a single operations manager earning £55K, we typically see 8–12 hours per week recoverable. That's £18K–£27K in reclaimed productivity from one person.
-
-**2. Data Entry & Transfer Between Systems (£25K–£80K/year wasted)**
-
-This is the silent killer. Someone downloads a CSV from one system, reformats it, and uploads it to another. Someone manually types invoice details from a PDF into your accounting software. Someone copies customer information from an email into your CRM.
-
-One of our clients — a recruitment firm with 30 staff — had three full-time people whose jobs were essentially moving data from one place to another. Three people. That's roughly £105K in salary alone, before you factor in errors, delays, and the fact that those three people were bored out of their minds and had a combined tenure of 14 months.
-
-We automated 85% of their data transfer work in six weeks. Two of those three people moved into client-facing roles where they actually wanted to be. The third left (she'd already been looking — the job was soul-destroying).
-
-**3. Invoice & Expense Processing (£15K–£60K/year wasted)**
-
-Manual invoice processing costs between £8 and £15 per invoice when you factor in the full cycle: receiving, verifying, coding, approving, entering, and reconciling. If you process 500 invoices a month, that's £48K–£90K per year just on processing.
-
-AI-powered invoice processing brings that cost down to £1–£3 per invoice. The maths writes itself.
-
-But it's not just the direct cost. Late payment penalties, missed early-payment discounts, duplicate payments, and reconciliation errors add another 15–25% on top. We've seen companies lose £30K+ per year on duplicate payments alone — payments that a simple AI check would have flagged in seconds.
-
-**4. Report Generation & Data Analysis (£20K–£75K/year wasted)**
-
-How many hours does your team spend pulling data together for weekly reports? Monthly board packs? Quarterly reviews?
-
-We worked with a property management company that had a finance analyst spending every Friday — literally the entire day — building a weekly performance report. Eight hours, every week, for a report that took the leadership team 15 minutes to read.
-
-We automated that report. It now generates at 6am every Friday, lands in the MD's inbox before she's finished her coffee, and it's more accurate than the manual version because it pulls live data instead of whatever snapshot the analyst happened to grab on Thursday afternoon.
-
-Cost of the automation: £3K to set up, £200/month to run. Annual saving: roughly £25K in analyst time, plus the analyst now spends Fridays on actual analysis — the work she was hired to do.
-
-**5. Meeting Scheduling, Prep & Follow-up (£10K–£35K/year wasted)**
-
-The average manager spends 4 hours per week on meeting-related admin. Scheduling, rescheduling, preparing agendas, writing up notes, sending follow-up actions, updating the CRM after client calls.
-
-For a team of 5 managers, that's 20 hours per week — effectively a half-time employee doing nothing but meeting admin. At manager-level rates (£45–£65/hour loaded cost), that's £47K–£68K per year.
-
-AI meeting assistants don't just take notes anymore. They prep briefing docs before the meeting (pulling CRM history, recent emails, LinkedIn updates), generate structured summaries during the meeting, and push action items to your project management tool afterwards. The whole cycle, automated.
-
-**6. Customer Onboarding & Support Triage (£20K–£90K/year wasted)**
-
-If you're still onboarding customers manually — sending welcome emails by hand, setting up accounts, scheduling kickoff calls, creating project spaces — you're burning time and creating inconsistency.
-
-Worse, every manual step is a dropout risk. We've seen companies lose 12–18% of new customers during onboarding simply because the process was slow and clunky. At a £5K average customer value, losing 15 out of 100 new customers to bad onboarding costs you £75K.
-
-Automated onboarding doesn't just save staff time. It reduces dropout, improves first impressions, and gets customers to value faster — which directly impacts retention and lifetime value.
-
-**7. Compliance, Documentation & Audit Prep (£15K–£120K/year wasted)**
-
-This one varies wildly by industry, but if you're in financial services, healthcare, legal, or any regulated sector, you know the pain. Document review, policy updates, audit trail maintenance, regulatory reporting.
-
-A mid-size financial advisory firm we work with was spending £8K per month on a compliance consultant. We didn't replace the consultant — you still need human judgement for compliance decisions. But we automated 60% of the grunt work: document scanning, change tracking, regulatory update monitoring, and report pre-population. The consultant now works two days a month instead of four. Annual saving: £48K.
-
-### How to Calculate YOUR Revenue Leak
-
-Grab a spreadsheet. This takes 30 minutes and it'll be the most valuable half-hour you spend this month.
-
-**Step 1: List your team members and their fully-loaded cost**
-
-Salary is just the start. Add employer NI (13.8%), pension (3–8%), benefits, equipment, office space allocation, and management overhead. A good rule of thumb: multiply base salary by 1.3–1.5 for total cost.
-
-| Role | Salary | Loaded Cost |
-|------|--------|-------------|
-| Operations Manager | £45,000 | £63,000 |
-| Admin Assistant | £26,000 | £36,400 |
-| Finance Officer | £38,000 | £53,200 |
-
-**Step 2: For each person, estimate hours per week on the 7 categories above**
-
-Be honest. Most people underestimate. If in doubt, ask your team to track their time for one week — you'll be shocked.
-
-**Step 3: Calculate the annual cost**
-
-\`(Hours per week × 48 working weeks × Hourly loaded cost) = Annual cost of manual work\`
-
-**Step 4: Apply an automation percentage**
-
-Not everything can be automated. Use these conservative estimates:
-
-- Email triage: 40–60% automatable
-- Data entry/transfer: 70–90% automatable
-- Invoice processing: 80–95% automatable
-- Report generation: 60–80% automatable
-- Meeting admin: 50–70% automatable
-- Customer onboarding: 60–85% automatable
-- Compliance prep: 40–60% automatable
-
-**Step 5: Subtract the cost of automation tools (typically £500–£2,000/month for an SME)**
-
-The number you're left with is your annual automation opportunity. For a company with 20–50 employees, it's almost always north of £100K.
-
-### Real Example: A £8M Professional Services Firm
-
-Here's a sanitised version of an actual client assessment we ran last year:
-
-- **Team size:** 35 people
-- **Total payroll (loaded):** £1.82M
-- **Hours per week on automatable tasks:** 187 hours (across all staff)
-- **Annual cost of those hours:** £389K
-- **Conservative automation rate:** 55%
-- **Annual saving potential:** £214K
-- **Cost of AI tools and implementation:** £42K (year 1), £18K (year 2+)
-- **Net Year 1 saving:** £172K
-- **Net Year 2+ saving:** £196K
-
-They started with three of the five quick wins in Chapter 2. Within 90 days, they'd recovered £47K in productivity. Within a year, they'd hit the full £172K.
-
----
-
-## Chapter 2: The 5 AI Quick Wins (Week 1 ROI)
-
-Stop planning. Start here. These five automations can be live within days, not months. Each one delivers measurable ROI within the first week.
-
-### Quick Win #1: Email Triage Automation
-
-**What it does:** Classifies incoming emails by urgency, category, and required action. Routes them to the right person. Drafts responses for routine enquiries. Flags anything that needs human attention.
-
-**The setup (2–4 hours):**
-
-1. Connect your email (Gmail or Outlook) to an automation platform (we use Make or n8n for most clients)
-2. Build classification rules using an LLM (GPT-4o or Claude) — feed it 50 example emails with your preferred categorisations
-3. Set up routing rules: urgent → Slack notification + inbox flag; routine enquiry → draft response for review; spam/irrelevant → archive
-4. Run in "shadow mode" for 2–3 days (classifies but doesn't act) to verify accuracy
-5. Go live
-
-**Expected results:**
-- 10–15 hours/week saved per person handling high-volume email
-- 90%+ classification accuracy after initial tuning
-- Response time for routine enquiries drops from hours to minutes
-
-**Cost:** £50–£150/month (automation platform + LLM API costs)
-
-**One thing people get wrong:** They try to automate responses to complex emails. Don't. Start with classification and routing only. Let AI draft responses for the genuinely routine stuff — order confirmations, meeting scheduling, information requests. Keep humans on anything that requires judgement.
-
-### Quick Win #2: Invoice Processing
-
-**What it does:** Receives invoices (email, upload, or scan), extracts all relevant data (supplier, amount, line items, tax, payment terms), matches against purchase orders, codes to the correct nominal account, and routes for approval.
-
-**The setup (4–8 hours):**
-
-1. Choose a tool: Dext (formerly Receipt Bank), Rossum, or a custom pipeline using document AI
-2. Set up your chart of accounts and supplier mappings
-3. Configure approval workflows (under £500 → auto-approve; £500–£5K → manager; £5K+ → director)
-4. Connect to your accounting software (Xero, QuickBooks, Sage)
-5. Process your first batch and verify
-
-**Expected results:**
-- Processing time per invoice drops from 8–12 minutes to under 1 minute
-- Error rate drops from 3–5% to under 0.5%
-- Early payment discounts captured (typically 1–2% on net-30 invoices)
-
-**Cost:** £100–£400/month depending on volume
-
-**The hidden win:** Cash flow visibility. When invoices are processed in real-time instead of batched weekly, your finance team has an accurate, up-to-date picture of commitments and cash position. We've seen clients improve cash flow forecasting accuracy by 30%+ just from faster invoice processing.
-
-### Quick Win #3: Meeting Prep & CRM Updates
-
-**What it does:** Before any client or prospect meeting, automatically generates a briefing doc. After the meeting, transcribes the conversation, extracts action items, updates your CRM, and sends follow-up emails.
-
-**The setup (3–5 hours):**
-
-1. Deploy an AI meeting assistant (Fireflies.ai, Otter.ai, or Grain — we prefer Fireflies for CRM integration)
-2. Connect to your calendar (Google Calendar or Outlook)
-3. Connect to your CRM (HubSpot, Salesforce, Pipedrive)
-4. Configure pre-meeting briefs: pull last 3 interactions, open deals, recent support tickets, company news
-5. Set up post-meeting workflows: summary → CRM note, action items → project tool, follow-up draft → email
-
-**Expected results:**
-- 4–6 hours/week saved per client-facing team member
-- CRM data quality improves dramatically (no more "I'll update it later" that never happens)
-- Follow-up emails sent within 30 minutes of meeting end, not 2 days later
-
-**Cost:** £15–£30/user/month
-
-**Why this matters beyond time saving:** CRM data quality is the foundation of everything else — forecasting, pipeline management, customer health scoring. If your CRM is full of stale, incomplete records (and it almost certainly is), none of your reporting or analytics is reliable. Automating CRM updates from meeting transcripts solves this at the source.
-
-### Quick Win #4: Report Generation
-
-**What it does:** Automatically pulls data from your systems (CRM, accounting, project management, analytics), generates formatted reports, and delivers them on schedule.
-
-**The setup (4–8 hours):**
-
-1. Identify your top 3 recurring reports (weekly team update, monthly financials, pipeline review — whatever your versions are)
-2. Map data sources and connect them via API or integration platform
-3. Build report templates (we use a combination of Python scripts and LLM-powered narrative generation)
-4. Schedule delivery: email, Slack, or dashboard
-5. Add natural language summaries — AI doesn't just present the numbers, it highlights what changed and why it matters
-
-**Expected results:**
-- Reports that took 2–8 hours to compile now generate in under 5 minutes
-- Reports are always on time (no more "sorry, I'll get it to you by end of day")
-- Narrative summaries catch insights that humans miss because they're too busy formatting cells
-
-**Cost:** £100–£300/month (API costs + hosting)
-
-**Pro tip:** Start with the report your CEO or board actually reads. When leadership sees an AI-generated report land in their inbox that's better than the manual version, buy-in for everything else becomes trivially easy.
-
-### Quick Win #5: Customer Onboarding (Self-Service)
-
-**What it does:** Automates the entire onboarding journey from signed contract to active customer. Welcome emails, account setup, kickoff scheduling, document collection, training resources, check-in sequences.
-
-**The setup (6–12 hours):**
-
-1. Map your current onboarding steps (most companies have 8–15 steps, half of which are manual)
-2. Build the automated workflow: trigger on deal closed in CRM
-3. Deploy a self-service portal or guided flow (Notion + Tally forms works surprisingly well for v1)
-4. Set up milestone tracking and automated check-ins
-5. Add an AI chatbot for onboarding FAQs (trained on your docs, not generic)
-
-**Expected results:**
-- Time-to-value for new customers drops by 40–60%
-- Onboarding dropout reduces by 50%+ (the biggest revenue impact)
-- Support team handles 60% fewer "how do I get started" queries
-- Customer satisfaction scores for onboarding improve (we see NPS jumps of 15–25 points)
-
-**Cost:** £200–£500/month
-
-**The money angle:** If your average customer is worth £10K/year and you onboard 20 customers per month with a 15% dropout rate, that's 3 lost customers/month = £360K/year in lost revenue. Cut dropout to 7% and you've just added £96K in annual revenue. From an onboarding flow.
-
----
-
-## Chapter 3: AI Agent Architecture
-
-### What AI Agents Actually Are (And Why Chatbots Don't Count)
-
-A chatbot answers questions when someone asks. An AI agent takes action without being asked.
-
-That's the fundamental difference, and it's why most companies who think they've "done AI" because they bolted a chatbot onto their website are barely scratching the surface.
-
-An AI agent has three characteristics:
-
-1. **Autonomy** — It operates on its own, triggered by events (new email arrives, invoice uploaded, meeting ended) rather than human prompts
-2. **Tool access** — It can read from and write to your actual business systems: CRM, email, accounting software, databases, project tools
-3. **Decision-making** — It follows defined rules and uses judgement (via an LLM) to handle novel situations within its scope
-
-Think of it this way: a chatbot is a receptionist who answers the phone. An agent is an operations manager who runs processes, makes routine decisions, and only escalates the genuinely tricky stuff.
-
-### The 9-Agent Model for Running Operations
-
-After deploying AI across dozens of companies, we've settled on a framework we call the 9-Agent Model. It's not the only way to structure AI operations, but it covers the core functions of any business and gives you a clear blueprint to build from.
-
-**Agent 1: The Inbox Agent**
-*Domain: Email & communications*
-Triages all incoming communications. Classifies, routes, drafts responses, flags urgent items. First line of defence against the communication firehose.
-
-**Agent 2: The Finance Agent**
-*Domain: Invoices, expenses, payments*
-Processes invoices, reconciles transactions, flags anomalies, generates financial summaries. Works alongside your accounting software, not instead of it.
-
-**Agent 3: The Calendar Agent**
-*Domain: Scheduling & meeting management*
-Handles scheduling, resolves conflicts, preps meeting briefs, processes post-meeting actions. The glue between your calendar and everything else.
-
-**Agent 4: The CRM Agent**
-*Domain: Customer data & pipeline*
-Keeps your CRM updated from every touchpoint — emails, meetings, support tickets, website activity. Maintains data quality and flags stale records.
-
-**Agent 5: The Content Agent**
-*Domain: Documents, reports, proposals*
-Generates reports, drafts proposals, creates internal documentation. Pulls from templates and live data to produce polished output.
-
-**Agent 6: The Onboarding Agent**
-*Domain: Customer & employee onboarding*
-Manages onboarding workflows for both customers and new hires. Tracks progress, sends nudges, collects documents, schedules check-ins.
-
-**Agent 7: The Support Agent**
-*Domain: Customer support & helpdesk*
-Handles tier-1 support queries, routes complex issues, maintains knowledge base, tracks resolution metrics. Learns from every interaction.
-
-**Agent 8: The Compliance Agent**
-*Domain: Regulatory & policy management*
-Monitors regulatory changes, reviews documents against policies, maintains audit trails, pre-populates compliance reports. Essential for regulated industries.
-
-**Agent 9: The Orchestrator**
-*Domain: Cross-agent coordination*
-The "manager" agent. Monitors all other agents, handles handoffs between them, escalates to humans when needed, and provides a unified dashboard of AI operations.
-
-### How to Structure Your First AI Team
-
-You don't deploy all nine at once. That's a recipe for a failed project and a very stressed IT team.
-
-**Start with two agents:** Pick the two that address your biggest pain points. For most companies, that's Agent 1 (Inbox) and either Agent 2 (Finance) or Agent 4 (CRM).
-
-**Get them stable:** Run each agent for 2–4 weeks. Monitor accuracy. Tune the rules. Let your team get comfortable with AI handling those processes.
-
-**Add the Orchestrator:** Once you have 2–3 agents running, deploy Agent 9 to coordinate between them. This is where the magic happens — agents passing context to each other, creating compound automations that no single agent could handle.
-
-**Scale gradually:** Add one new agent every 4–6 weeks. By month 6, you'll have 5–6 agents running. By month 12, the full model.
-
-**The golden rule:** Every agent needs a human supervisor. Not someone watching it full-time — more like a manager who checks in daily, reviews edge cases, and approves any changes to the agent's rules. Without this, you get drift: small errors compounding until someone notices the agent's been miscategorising invoices for three months.
-
----
-
-## Chapter 4: Implementation Roadmap
-
-### The 30-Day Plan: Zero to AI-Automated
-
-**Days 1–3: Audit & Assessment**
-
-- Complete the Revenue Leak Calculator from Chapter 1
-- Identify your top 3 automation opportunities (rank by: ease of implementation × annual saving)
-- Audit your current tool stack — what APIs are available? What integrations exist?
-- Document your top 5 manual processes step-by-step (you'll need this for automation design)
-
-**Days 4–7: Foundation Setup**
-
-- Choose your automation platform (recommendations below)
-- Set up your LLM access (API keys for GPT-4o, Claude, or both)
-- Deploy Quick Win #1 (Email Triage) in shadow mode
-- Start Quick Win #2 (Invoice Processing) setup
-
-**Days 8–14: First Agents Live**
-
-- Take Email Triage live after shadow mode validation
-- Complete Invoice Processing setup and begin shadow mode
-- Deploy Quick Win #3 (Meeting Prep) — this one's fast because the tools are mostly plug-and-play
-- Begin documenting results: hours saved, errors prevented, team feedback
-
-**Days 15–21: Expand & Optimise**
-
-- Take Invoice Processing live
-- Deploy Quick Win #4 (Report Generation) for your most important recurring report
-- Start Quick Win #5 (Customer Onboarding) design
-- First optimisation pass on Email Triage — adjust classification rules based on two weeks of data
-- Share initial results with leadership team
-
-**Days 22–30: Consolidate & Plan**
-
-- Deploy Customer Onboarding automation
-- Compile your first monthly AI Operations Report (ROI, hours saved, error rates, team satisfaction)
-- Build the business case for Phase 2 (Chapter 5 template)
-- Plan your next three agents based on results and team feedback
-- Celebrate. Seriously. Your team just automated work that was eating their lives.
-
-### Tool Stack Recommendations
-
-You don't need to spend a fortune. Here's what a solid AI operations stack looks like for an SME:
-
-**Automation Platform (pick one):**
-- **Make (formerly Integromat)** — £55–£160/month. Best for: teams who want visual workflow building. Our default recommendation for most SMEs.
-- **n8n** — Free (self-hosted) or £20–£50/month (cloud). Best for: teams with some technical capability who want more control.
-- **Zapier** — £55–£300/month. Best for: simple, linear automations. Gets expensive fast for complex workflows.
-
-**LLM Access:**
-- **OpenAI API (GPT-4o)** — Pay-per-use, typically £100–£400/month for SME-level usage. Best all-rounder.
-- **Anthropic API (Claude)** — Similar pricing. Better for long documents, analysis, and nuanced tasks.
-- **Use both.** Different models excel at different tasks. Route accordingly.
-
-**Document Processing:**
-- **Dext** — £25–£50/month. Excellent for invoices and receipts.
-- **Rossum** — Custom pricing. Better for high-volume, complex document types.
-
-**Meeting AI:**
-- **Fireflies.ai** — £15–£28/user/month. Best CRM integration.
-- **Otter.ai** — £8–£20/user/month. Best transcription quality.
-
-**Knowledge Base / AI Chatbot:**
-- **Intercom Fin** — From £0.99/resolution. Best for customer-facing support.
-- **Custom RAG pipeline** — £200–£500/month (hosting + API). Best for internal knowledge management.
-
-**Total monthly cost for a 20-person company: £800–£2,500/month**
-
-### Budget Breakdown: AI vs. One More Hire
-
-This is the comparison that makes the business case obvious.
-
-| | New Hire | AI Operations Stack |
-|---|---------|-------------------|
-| Annual cost | £35K–£55K (salary + NI + pension + benefits + equipment + office space + management time) | £12K–£30K (tools + API costs + setup amortised) |
-| Available hours | 1,820/year (after holidays, sick days, meetings, breaks) | 8,760/year (24/7/365) |
-| Ramp-up time | 3–6 months to full productivity | 1–4 weeks |
-| Error rate | 2–5% (human average for repetitive tasks) | 0.1–0.5% (after tuning) |
-| Scalability | Linear (need more output = hire more people) | Near-zero marginal cost |
-| Turnover risk | Average UK tenure: 2.3 years, then you recruit again | N/A |
-
-A single AI operations stack does the repetitive work of 2–4 employees. Not the creative, strategic, relationship-building work — the mind-numbing, error-prone, soul-destroying busywork that nobody applied for.
-
-The goal isn't fewer people. It's the same people doing better work.
-
----
-
-## Chapter 5: ROI Calculator & Business Case Template
-
-### The Board-Ready Business Case
-
-Copy this structure. Fill in your numbers. Present it to whoever controls the budget. We've used this template to secure buy-in at companies ranging from £3M startups to £200M enterprises.
-
----
-
-**AI OPERATIONS BUSINESS CASE**
-
-**Prepared by:** [Your Name]
-**Date:** [Date]
-**Investment Requested:** £[X] (Year 1 total)
-
-**1. Executive Summary**
-
-We are currently spending approximately £[X]/year on manual operational processes that can be automated using AI. A phased implementation over 6 months would reduce this cost by [X]%, delivering a net saving of £[X] in Year 1 and £[X] annually thereafter.
-
-**2. Current State**
-
-- Total hours/week spent on automatable tasks: [X]
-- Annual cost of those hours: £[X]
-- Key pain points: [list top 3]
-- Error rate on manual processes: [X]%
-- Customer impact: [e.g., slow onboarding, delayed responses]
-
-**3. Proposed Solution**
-
-Phase 1 (Month 1–2): Deploy email triage, invoice processing, and meeting automation
-Phase 2 (Month 3–4): Add report generation and customer onboarding automation
-Phase 3 (Month 5–6): Deploy CRM agent and orchestration layer
-
-**4. Investment Required**
-
-| Item | Year 1 | Year 2+ |
-|------|--------|---------|
-| Automation platform | £[X] | £[X] |
-| LLM API costs | £[X] | £[X] |
-| Specialist tools | £[X] | £[X] |
-| Implementation support | £[X] | £0 |
-| Internal time (setup) | £[X] | £0 |
-| **Total** | **£[X]** | **£[X]** |
-
-**5. Expected Returns**
-
-*Conservative Projection (assumes 40% automation rate):*
-- Annual saving: £[X]
-- ROI: [X]%
-- Payback period: [X] months
-
-*Moderate Projection (assumes 60% automation rate):*
-- Annual saving: £[X]
-- ROI: [X]%
-- Payback period: [X] months
-
-*Aggressive Projection (assumes 80% automation rate):*
-- Annual saving: £[X]
-- ROI: [X]%
-- Payback period: [X] months
-
-**6. Risk Mitigation**
-
-- Shadow mode testing before any live deployment
-- Human oversight maintained for all AI decisions above defined thresholds
-- Phased rollout allows course correction
-- All tools chosen have enterprise-grade security and data handling
-- Monthly review cycles with clear success metrics
-
-**7. Success Metrics**
-
-- Hours saved per week (target: [X] by Month 3)
-- Error rate reduction (target: [X]% → [X]%)
-- Processing time for key workflows (target: [X]% reduction)
-- Employee satisfaction (measured via quarterly survey)
-- Customer satisfaction impact (NPS, onboarding completion rate)
-
----
-
-### How to Set Conservative vs. Aggressive Projections
-
-**Conservative:** Assume only your lowest-hanging fruit gets automated. Use 40% automation rates. Assume 3-month ramp to full productivity. Include a 20% buffer for unexpected costs. This is the number you commit to.
-
-**Moderate:** Use 60% automation rates. Assume 2-month ramp. Include 10% buffer. This is the number you expect to hit.
-
-**Aggressive:** Use 80% automation rates. Assume everything goes smoothly. No buffer. This is the upside case — what happens if the project goes really well. Don't promise this number, but mention it to show the ceiling.
-
-**The trick:** Present all three, but stake your reputation on the conservative number. When you hit moderate (and you probably will), you look like a hero. If you somehow hit aggressive, you're a legend.
-
-### Measuring Success: What to Track
-
-Don't just measure hours saved. That's important, but it's not the whole picture.
-
-**Efficiency metrics:**
-- Hours saved per week (by team, by process)
-- Processing time per unit of work (invoice, email, report)
-- Error rate before vs. after automation
-- Backlog size (are things getting processed faster?)
-
-**Financial metrics:**
-- Direct cost saving (tool cost vs. labour cost displaced)
-- Revenue impact (faster onboarding → less dropout → more revenue)
-- Cash flow improvement (faster invoice processing → better visibility)
-- Cost avoidance (hires you didn't need to make)
-
-**People metrics:**
-- Employee satisfaction (are people happier doing less grunt work?)
-- Retention (does removing tedious tasks reduce turnover?)
-- Capacity created (what are people doing with their freed-up time?)
-
-**Quality metrics:**
-- Consistency of output (AI doesn't have bad Mondays)
-- Customer satisfaction scores
-- Compliance accuracy
-
-Track these monthly. Review with leadership quarterly. Adjust your roadmap based on what's working and what's not.
-
----
-
-## Appendix: AI Tool Directory
-
-The 20 tools we recommend most frequently, organised by category. Pricing current as of early 2026, but check their websites — this space moves fast.
-
-### Automation Platforms
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **Make** | Visual workflow automation | From £55/mo | ★★★★★ |
-| **n8n** | Technical teams wanting control | Free (self-hosted) / £20/mo+ | ★★★★☆ |
-| **Zapier** | Simple, linear automations | From £55/mo | ★★★☆☆ |
-
-### LLM Providers
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **OpenAI API (GPT-4o)** | General-purpose, fast | ~£0.005–£0.015/1K tokens | ★★★★★ |
-| **Anthropic (Claude)** | Long documents, analysis | ~£0.003–£0.015/1K tokens | ★★★★★ |
-| **Google Gemini** | Multimodal, large context | ~£0.002–£0.010/1K tokens | ★★★★☆ |
-
-### Document Processing
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **Dext** | Invoices & receipts | From £25/mo | ★★★★☆ |
-| **Rossum** | High-volume doc processing | Custom pricing | ★★★★☆ |
-| **DocuSign IAM** | Contracts & agreements | From £20/user/mo | ★★★★☆ |
-
-### Meeting & Transcription
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **Fireflies.ai** | CRM integration | From £15/user/mo | ★★★★★ |
-| **Otter.ai** | Transcription quality | From £8/user/mo | ★★★★☆ |
-| **Grain** | Video highlights & clips | From £15/user/mo | ★★★☆☆ |
-
-### CRM & Sales
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **HubSpot** | SME all-in-one | Free–£800/mo | ★★★★★ |
-| **Pipedrive** | Sales-focused teams | From £14/user/mo | ★★★★☆ |
-| **Clay** | Data enrichment & outreach | From £130/mo | ★★★★☆ |
-
-### Customer Support
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **Intercom** | AI-first support | From £65/mo + £0.99/AI resolution | ★★★★★ |
-| **Zendesk** | Enterprise support | From £45/agent/mo | ★★★★☆ |
-| **Freshdesk** | Budget-friendly | Free–£60/agent/mo | ★★★☆☆ |
-
-### Knowledge & Content
-
-| Tool | Best For | Pricing | Our Rating |
-|------|----------|---------|------------|
-| **Notion AI** | Internal knowledge base | From £7.50/user/mo | ★★★★☆ |
-| **Jasper** | Marketing content generation | From £39/mo | ★★★☆☆ |
-
----
-
-## What Comes Next
-
-You've got the framework. You've got the numbers. You've got a 30-day plan and a business case template.
-
-The question isn't whether AI automation will transform your operations. It will. The question is whether you'll be the one leading that transformation, or reacting to it when your competitors force the issue.
-
-Here's what we suggest:
-
-1. **This week:** Complete the Revenue Leak Calculator. Know your number.
-2. **Next week:** Deploy Quick Win #1 (Email Triage). Get your first taste of automated operations.
-3. **This month:** Work through all five Quick Wins. Build momentum and evidence.
-4. **Next month:** Present your business case. Start planning Phase 2.
-
-If you want help with any of this — from a half-day audit to full implementation — that's what we do.
-
-**AfrexAI** builds and manages AI operations for growth-stage businesses. We've deployed AI agents across 40+ companies, automating over 200,000 hours of manual work in the last two years.
-
-**Get in touch:**
-- Website: afrexai.com
-- Email: hello@afrexai.com
-- Book a free 30-minute AI Operations Audit: afrexai.com/audit
-
----
-
-*© 2026 AfrexAI Ltd. All rights reserved.*
-
-*This playbook is licensed for personal and internal business use only. Redistribution, resale, or public sharing without written permission is prohibited.*
-
----
-
-*Built by operators, for operators. No fluff. No hype. Just results.*
-`;
-document.getElementById('playbook-content').innerHTML = marked.parse(md);
-// Add IDs to h2s for TOC
-const h2s = document.querySelectorAll('.prose h2');
-const ids = ['ch1','ch2','ch3','ch4','ch5','appendix'];
-h2s.forEach((h, i) => { if (ids[i]) h.id = ids[i]; });
-</script>
 </body>
 </html>
